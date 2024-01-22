@@ -8,8 +8,9 @@ import { th_TH } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import th from '@angular/common/locales/th';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BypassInterceptor } from './core/interceptors/bypass/bypass.interceptor';
 
 registerLocaleData(th);
 
@@ -25,7 +26,8 @@ registerLocaleData(th);
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: NZ_I18N, useValue: th_TH }
+    { provide: NZ_I18N, useValue: th_TH },
+    { provide: HTTP_INTERCEPTORS, useClass: BypassInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

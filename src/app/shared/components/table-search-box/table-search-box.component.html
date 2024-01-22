@@ -1,0 +1,35 @@
+<div
+  class="p-4"
+  style="border: 1px solid black">
+  <div class="row">
+    <div class="col">
+      <nz-range-picker
+        [(ngModel)]="dateRange"
+        (ngModelChange)="onDateRangeChange()"></nz-range-picker>
+    </div>
+
+    <div class="col">
+      <nz-input-group
+        nzSearch
+        [nzAddOnAfter]="suffixIconButton">
+        <input
+          type="text"
+          nz-input
+          [ngModel]="searchTerm"
+          [disabled]="true" />
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button
+          nz-button
+          nzType="primary"
+          nzSearch
+          (click)="onSearchTermChange()"
+          [disabled]="true">
+          <span
+            nz-icon
+            nzType="search"></span>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+
+<section id="search-box-wrapper" class="my-4">
+  <shared-table-search-box
+  [dateRange]="(dateRange$ | async) || []"
+  (dateRangeChange)="onDateRangeChange($event)"></shared-table-search-box>
+</section>
+
+
+<section class="selection-wrapper" class="d-flex justify-content-center">
+  <nz-radio-group
+  class="mb-4"
+    [ngModel]="selectJobType$ | async"
+    (ngModelChange)="onSelectJobTypeChange($event)">
+    <label
+      nz-radio-button
+      [nzValue]="jobTypeSelection.waitJob">
+      ยังไม่มีเจ้าของเคส
+    </label>
+    <label
+      nz-radio-button
+      [nzValue]="jobTypeSelection.processJob">
+      เคสกำลังดำเนินการ
+    </label>
+    <label
+      nz-radio-button
+      [nzValue]="jobTypeSelection.doneJob">
+      เคสที่จบแล้ว
+    </label>
+  </nz-radio-group>
+</section>
+
+
+<section
+  id="table-sale-car-job-wrapper"
+  class="mb-4">
+  <nz-table
+    #tableSaleCarJobTable
+    [nzBordered]="true"
+    [nzOuterBordered]="true"
+    [nzData]="(tableSaleCarJobByJobType$ | async) || []"
+    [nzLoading]="loading$ | async">
+    <thead>
+      <tr>
+        <th
+          *ngFor="let column of listOfColumns"
+          [id]="column.name"
+          [nzSortOrder]="column.sortOrder"
+          [nzSortFn]="column.sortFn"
+          [nzShowFilter]="column.filter"
+          [nzFilters]="column.listOfFilter"
+          [nzFilterFn]="column.filterFn"
+          [nzFilterMultiple]="column.filterMultiple"
+          [nzSortDirections]="column.sortDirections">
+          {{ column.label }}
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of tableSaleCarJobTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.customerFullName }}</td>
+      <td>{{ data.customerPhone }}</td>
+      <td>{{ data.createdAt }}</td>
+      <td>{{ data.finance }}</td>
+      <td>{{ data.loanType }}</td>
+      <td>{{ data.status }}</td>
+      <td>{{ data.createdDateUntilToday }}</td>
+      <td>{{ data.sla }}</td>
+      <td>{{ data.process }}</td>
+      <td>{{ data.closedBy }}</td>
+      <td>{{ data.updatedName }}</td>
+      <td>{{ data.saleName }}</td>
+      <td>{{ data.jobFrom }}</td>
+      <td>{{ data.lastStatus }}</td>
+    </tbody>
+  </nz-table>
+</section>
+
