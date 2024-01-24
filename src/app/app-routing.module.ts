@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./module/car-loan/car-loan.module').then(m => m.CarLoanModule)
-  }
+  },
+  {
+    path: 'manage-account',
+    loadChildren: () => import('./module/accounting/accounting.module').then(m => m.AccountingModule)
+  },
 ];
 
 @NgModule({

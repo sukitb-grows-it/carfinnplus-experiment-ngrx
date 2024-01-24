@@ -1,0 +1,43 @@
+<div class="container-fluid p-5">
+  <h1 class="text-center mb-4">จัดการพนักงาน</h1>
+  <section class="mb-4">
+    <nz-table
+      #tableManageAccountTable
+      [nzBordered]="true"
+      [nzOuterBordered]="true"
+      [nzData]="(tableManageAccount$ | async) || []"
+      [nzLoading]="loading$ | async">
+      <thead>
+        <tr>
+          <th
+            *ngFor="let column of listOfColumns"
+            [id]="column.name"
+            [nzSortOrder]="column.sortOrder"
+            [nzSortFn]="column.sortFn"
+            [nzShowFilter]="column.filter"
+            [nzFilters]="column.listOfFilter"
+            [nzFilterFn]="column.filterFn"
+            [nzFilterMultiple]="column.filterMultiple"
+            [nzSortDirections]="column.sortDirections"
+            class="text-center">
+            {{ column.label }}
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of tableManageAccountTable.data">
+        <td class="text-center">{{ data.accountId }}</td>
+        <td class="text-center">{{ data.accountFullName }}</td>
+        <td class="text-center">
+          {{ data.lastLogin ? (data.lastLogin | date) : '-' }}
+        </td>
+        <td class="text-center">{{ data.accountType }}</td>
+        <td class="text-center">
+          <span
+            nz-icon
+            nzType="file-search"
+            nzTheme="outline"></span>
+        </td>
+      </tbody>
+    </nz-table>
+  </section>
+</div>
