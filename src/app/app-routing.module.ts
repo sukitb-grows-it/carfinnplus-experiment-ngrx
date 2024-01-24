@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./module/car-loan/car-loan.module').then(m => m.CarLoanModule)
+  },
+  {
+    path: 'accountManagement',
+    loadChildren: () => import('./module/car-loan/car-loan.module').then(m => m.CarLoanModule)
   }
 ];
 

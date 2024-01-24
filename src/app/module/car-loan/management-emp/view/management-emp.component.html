@@ -1,0 +1,23 @@
+<p>management-emp works!</p>
+<div style="text-align: center; color: #03428E; font-size: 35px;">
+  <span>จัดการพนักงาน</span>
+</div>
+
+<section>
+  <nz-table [nzBordered]="true" [nzOuterBordered]="true" [nzData]="(tableEmployeesType$ | async) || []"
+    [nzLoading]="loading$ | async">
+    <thead>
+      <tr>
+        <th *ngFor="let column of listColumns" [id]='column.name' [nzSortOrder]="column.sortOrder"
+          [nzSortFn]="column.sortFn" [nzShowFilter]="column.filter" [nzFilters]="column.listOfFilter"
+          [nzFilterFn]="column.filterFn" [nzFilterMultiple]="column.filterMultiple"
+          [nzSortDirections]="column.sortDirections">
+          {{column.label}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <td></td>
+    </tbody>
+  </nz-table>
+</section>
