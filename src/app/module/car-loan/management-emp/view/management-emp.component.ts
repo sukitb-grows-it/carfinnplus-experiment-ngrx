@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TableEmployeeStore } from '../store/table-employee-mangement.store';
 import { employee } from '../model/management-emp.model';
+import { NzTableSortFn } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-management-emp',
@@ -9,14 +10,66 @@ import { employee } from '../model/management-emp.model';
 })
 export class ManagementEmpComponent {
 
-  tableEmployeesType$ = this.store.tableEmployeeType$
+  tableEmployees$ = this.store.tableEmployees$
   loading$ = this.store.loading$
+
+  accountType = [
+    {
+      text: 'Manager',
+      value: 'Manager',
+    },
+    {
+      text: 'Super Admin',
+      value: 'Super Admin',
+    },
+    {
+      text: 'Sale',
+      value: 'Sale',
+    },
+    {
+      text: 'Sale Supervisor',
+      value: 'Sale Supervisor',
+    },
+    {
+      text: 'Sale Manager',
+      value: 'Sale Manager',
+    },
+    {
+      text: 'Center',
+      value: 'Center',
+    },
+    {
+      text: 'Coordinate Manager',
+      value: 'Coordinate Manager',
+    },
+    {
+      text: 'Collector',
+      value: 'Collector',
+    },
+    {
+      text: 'Credit',
+      value: 'Credit',
+    },
+    {
+      text: 'Risk Manager',
+      value: 'Risk Manager',
+    },
+    {
+      text: 'Accounting',
+      value: 'Accounting',
+    },
+    {
+      text: 'Accounting Manager',
+      value: 'Accounting Manager',
+    },
+  ];
 
   listColumns = [
     {
       name: 'id',
       label: 'รหัสพนักงาน',
-      sortFn: (a: employee, b: employee) => a.id.localeCompare(b.id),
+      sortFn: (a: employee, b: employee) =>
+        a.id.localeCompare(b.id),
       sortDirections: ['ascend', 'descend', null],
       sortOrder: 'descend',
       filter: false,
@@ -38,7 +91,11 @@ export class ManagementEmpComponent {
     {
       name: 'date',
       label: 'เข้าระบบล่าสุด',
-      sortFn: (a: employee, b: employee) => a.dataLogin.getTime() - b.dataLogin.getTime(),
+      sortFn: (a: employee, b: employee) => {
+        const dateA = a.dataLogin || new Date(0);
+        const dateB = b.dataLogin || new Date(0);
+        return dateA.getTime() - dateB.getTime();
+      },
       sortDirections: ['ascend', 'descend', null],
       sortOrder: 'descend',
       filter: false,
@@ -50,11 +107,15 @@ export class ManagementEmpComponent {
       name: 'type',
       label: 'ประเภทพนักงาน',
       sortFn: null,
-      sortDirections: [],
+      sortDirections: [null],
       sortOrder: null,
       filter: true,
-      listOfFilter: [{ text: 'a', value: 'a' }, { text: 'b', value: 'a' }, { text: 'c', value: 'a' }],
-      filterFn: (list: string[], item: employee) => list.some(name => item.roleEmployee.indexOf(name) !== -1),
+      listOfFilter: this.accountType,
+      filterFn: (list: string[], item: employee) => {
+        return list.some(e => {
+          return e === item.roleEmployee
+        })
+      },
       filterMultiple: true,
     },
     {
@@ -71,5 +132,6 @@ export class ManagementEmpComponent {
   ]
 
   constructor(private store: TableEmployeeStore) {
+    this.store.getTableEmployee('all')
   }
 }

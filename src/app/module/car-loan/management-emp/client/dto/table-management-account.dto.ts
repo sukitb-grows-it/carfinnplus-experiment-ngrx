@@ -8,10 +8,11 @@ export interface ManageAccountDTO {
   account_role: string;
   create_date: string;
   image_name: string;
-  datetime_last_login: Date;
+  datetime_last_login: string;
   role_group: string;
 }
 
 export interface TableManageAccountDTO {
-  tableJobs: ManageAccountDTO[];
+  account_type: string;
+  list: ManageAccountDTO[];
 }

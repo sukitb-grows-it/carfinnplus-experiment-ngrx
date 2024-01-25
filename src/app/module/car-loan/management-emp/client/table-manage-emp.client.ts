@@ -14,19 +14,19 @@ export class TableEmployeeClient {
   URL = environment.apiUrl;
   ENDPOINT = '/account'
 
-  tableManageAccountAdaper = new TableManageAccountAdapter();
+  tableManageAccountAdapter = new TableManageAccountAdapter();
 
   constructor(private http: HttpClient) { }
 
-  fetchTableManagementAccount() {
+  fetchTableManagementAccount(type: string) {
     return this.http.get<{
       status: string,
       data: TableManageAccountDTO
     }>(
-      `${this.URL}${this.ENDPOINT}/get_accountlist?account_type=all`
+      `${this.URL}${this.ENDPOINT}/get_accountlist?account_type=${type}`
     ).pipe(
       map((res) => {
-        return this.tableManageAccountAdaper.adapt(res.data)
+        return this.tableManageAccountAdapter.adapt(res.data)
       }))
   }
 }

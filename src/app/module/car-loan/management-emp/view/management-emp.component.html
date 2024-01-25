@@ -4,11 +4,11 @@
 </div>
 
 <section>
-  <nz-table [nzBordered]="true" [nzOuterBordered]="true" [nzData]="(tableEmployeesType$ | async) || []"
+  <nz-table #tableAccountTable [nzBordered]="true" [nzOuterBordered]="true" [nzData]="(tableEmployees$ | async) || []"
     [nzLoading]="loading$ | async">
     <thead>
       <tr>
-        <th *ngFor="let column of listColumns" [id]='column.name' [nzSortOrder]="column.sortOrder"
+        <th *ngFor="let column of listColumns" class="text-center" [id]='column.name' [nzSortOrder]="column.sortOrder"
           [nzSortFn]="column.sortFn" [nzShowFilter]="column.filter" [nzFilters]="column.listOfFilter"
           [nzFilterFn]="column.filterFn" [nzFilterMultiple]="column.filterMultiple"
           [nzSortDirections]="column.sortDirections">
@@ -16,8 +16,12 @@
         </th>
       </tr>
     </thead>
-    <tbody>
-      <td></td>
+    <tbody class="text-center" *ngFor="let data of tableAccountTable.data">
+      <td>{{data.id?data.id:''}}</td>
+      <td>{{data.employeeFullName}}</td>
+      <td>{{data.dataLogin ?(data.dataLogin |date:'dd-MM-YYYY'):''}}</td>
+      <td>{{data.roleEmployee}}</td>
+      <td><a href="/accountManagement"><span nz-icon nzType="file-search" nzTheme="outline"></span></a></td>
     </tbody>
   </nz-table>
 </section>

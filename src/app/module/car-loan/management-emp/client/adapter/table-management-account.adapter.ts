@@ -7,7 +7,7 @@ export class TableManageAccountAdapter {
     const result = {
       id: job.account_id,
       employeeFullName: `${job.name ?? ''} ${job.surname ?? ''}`,
-      dataLogin: job.datetime_last_login,
+      dataLogin: new Date(job.datetime_last_login ?? ''),
       roleEmployee: job.role_group
     }
 
@@ -15,7 +15,7 @@ export class TableManageAccountAdapter {
   }
 
   public adapt(dto: TableManageAccountDTO): TableEmployee {
-    const employeeManage = dto.tableJobs.map((job: ManageAccountDTO) => this.adaptBaseJob(job))
+    const employeeManage = dto.list.map((job: ManageAccountDTO) => this.adaptBaseJob(job))
     return { employeeManage }
 
   }
