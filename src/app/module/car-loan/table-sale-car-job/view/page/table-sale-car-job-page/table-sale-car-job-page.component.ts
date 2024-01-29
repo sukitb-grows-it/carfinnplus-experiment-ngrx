@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { JobType, TableSaleCarJobPageStore } from '../../../store/table-sale-car-job-page.store';
 import { SaleCarJob } from '../../../model/table-sale-car-job.model';
+import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { ColumnItem } from '../../../model/column-item.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table-sale-car-job-page',
@@ -13,6 +16,11 @@ export class TableSaleCarJobPageComponent {
   selectJobType$ = this.store.selectJobType$;
   dateRange$ = this.store.dateRange$;
   loading$ = this.store.loading$;
+  searchTerm$ = this.store.searchTerm$;
+  bankFilterList$ = this.store.bankFilterList$;
+  bankFilterList: NzTableFilterList = []
+
+  listOfColumns: ColumnItem[] = []
 
   jobTypeSelection = {
     waitJob: JobType.WaitJob,
@@ -20,180 +28,16 @@ export class TableSaleCarJobPageComponent {
     doneJob: JobType.DoneJob,
   }
 
-  listOfColumns = [
-    {
-        name: 'id',
-        label: 'เลขที่ขอกู้',
-        sortFn: (a: SaleCarJob, b: SaleCarJob) => a.id.localeCompare(b.id),
-        sortDirections: ['ascend', 'descend', null],
-        sortOrder: 'descend',
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'name',
-        label: 'ชื่อ-นามสกุล',
-        sortFn: (a: SaleCarJob, b: SaleCarJob) =>
-            a.customerFullName.localeCompare(b.customerFullName),
-        sortDirections: ['ascend', 'descend', null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'customerPhone',
-        label: 'เบอร์โทรศัพท์',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'createdAt',
-        label: 'วันที่ขอกู้',
-        sortFn: (a: SaleCarJob, b: SaleCarJob) =>
-            a.createdAt.getTime() - b.createdAt.getTime(),
-        sortDirections: ['ascend', 'descend', null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'finance',
-        label: 'ไฟแนนซ์',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'loanType',
-        label: 'ประเภทสินเชื่อ',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'status',
-        label: 'สถานะ',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'createdDateUntilToday',
-        label: 'วันที่ขอกู้ถึงปัจจุบัน',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'sla',
-        label: 'SLA',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'process',
-        label: 'ขั้นตอน',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'closedBy',
-        label: 'ปิดโดย',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false,
-    },
-    {
-        name: 'updatedName',
-        label: 'อัพเดทโดย',
-        sortFn: null,
-        sortDirections: [null],
-        filterMultiple: false,
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-
-    },
-    {
-        name: 'saleName',
-        label: 'พนักงานขาย',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false
-    },
-    {
-        name: 'jobFrom',
-        label: 'มาจาก',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false
-    },
-    {
-        name: 'lastStatus',
-        label: 'สถานะล่าสุดก่อนยกเลิก',
-        sortFn: null,
-        sortDirections: [null],
-        sortOrder: null,
-        filter: false,
-        listOfFilter: [],
-        filterFn: null,
-        filterMultiple: false
-    },
-];
-
-  constructor(private store: TableSaleCarJobPageStore) {
+  constructor(private store: TableSaleCarJobPageStore, private activateRoute: ActivatedRoute) {
     this.store.getTableSaleCarJob([])
     this.store.setSelectJobType(JobType.WaitJob)
+    this.store.getFilterList()
+    this.activateRoute.data.subscribe(
+      ({ pageConfig}) => {
+        console.log(pageConfig)
+        this.listOfColumns = pageConfig.listOfColumns
+      }
+    )
   }
 
   onDateRangeChange(dateRange: Date[]): void {
@@ -203,6 +47,11 @@ export class TableSaleCarJobPageComponent {
 
   onSelectJobTypeChange(jobType: JobType): void {
     this.store.setSelectJobType(jobType)
+  }
+
+  handleSearchTermChange(searchTerm: string): void {
+    console.log(searchTerm)
+    this.store.setSearchTerm(searchTerm)
   }
 
 }

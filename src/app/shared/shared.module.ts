@@ -8,6 +8,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+
 
 const nzModule = [
   NzInputModule,
@@ -16,6 +18,7 @@ const nzModule = [
   NzDatePickerModule,
   NzButtonModule,
   NzRadioModule,
+  NzEmptyModule
 ]
 
 @NgModule({

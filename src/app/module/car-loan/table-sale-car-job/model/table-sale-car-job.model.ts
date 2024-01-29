@@ -1,3 +1,5 @@
+import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from "ng-zorro-antd/table";
+
 export interface SaleCarJob {
     id: string;
     customerFullName: string;
@@ -21,3 +23,4 @@ export interface TableSaleCarJob {
     processJob: SaleCarJob[];
     doneJob: SaleCarJob[];
 }
+

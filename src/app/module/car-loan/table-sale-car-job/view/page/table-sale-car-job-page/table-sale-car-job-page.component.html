@@ -2,9 +2,11 @@
 <section id="search-box-wrapper" class="my-4">
   <shared-table-search-box
   [dateRange]="(dateRange$ | async) || []"
-  (dateRangeChange)="onDateRangeChange($event)"></shared-table-search-box>
+  (dateRangeChange)="onDateRangeChange($event)"
+  (searchTermChange)="handleSearchTermChange($event)"
+  [searchTerm]="(searchTerm$ | async) || ''"
+  ></shared-table-search-box>
 </section>
-
 
 <section class="selection-wrapper" class="d-flex justify-content-center">
   <nz-radio-group
@@ -13,17 +15,25 @@
     (ngModelChange)="onSelectJobTypeChange($event)">
     <label
       nz-radio-button
-      [nzValue]="jobTypeSelection.waitJob">
+      [nzValue]="jobTypeSelection.waitJob"
+      [nzDisabled]="loading$ | async"
+      >
       ยังไม่มีเจ้าของเคส
     </label>
     <label
       nz-radio-button
-      [nzValue]="jobTypeSelection.processJob">
+      [nzValue]="jobTypeSelection.processJob"
+      [nzDisabled]="loading$ | async"
+
+      >
       เคสกำลังดำเนินการ
     </label>
     <label
       nz-radio-button
-      [nzValue]="jobTypeSelection.doneJob">
+      [nzValue]="jobTypeSelection.doneJob"
+      [nzDisabled]="loading$ | async"
+
+      >
       เคสที่จบแล้ว
     </label>
   </nz-radio-group>
@@ -38,7 +48,9 @@
     [nzBordered]="true"
     [nzOuterBordered]="true"
     [nzData]="(tableSaleCarJobByJobType$ | async) || []"
-    [nzLoading]="loading$ | async">
+    [nzLoading]="loading$ | async"
+    [nzNoResult]="'ไม่พบข้อมูล'"
+    >
     <thead>
       <tr>
         <th
