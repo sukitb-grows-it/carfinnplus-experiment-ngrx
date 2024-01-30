@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+
+/* Additional Touch-Ups */
+h1,h2,h3,h4,h5,p {
+  font-family: 'Work Sans', sans-serif;
+}
+
+body {
+  background-color: #1f1f1f;
+  display: flex;
+  gap: 20px;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}
+/* Additional Touch-Ups */
+
+/* Material Web Card */
+/* Block */
+.material-card {
+  display: block;
+  background-color: #28292a;
+  width: 400px;
+  min-width: 200px;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 200ms cubic-bezier(.2,0,0,1);
+}
+
+/* Elements */
+.card-picture {
+  border-radius: 30px;
+  transition: 200ms cubic-bezier(.2,0,0,1);
+}
+
+.card-info {
+  padding: 20px;
+  background-color: white;
+}
+
+.card-title {
+  font-weight: 400;
+}
+
+.card-desc {
+  
+}
+
+/* Modifiers */
+.material-card:active {
+  border-radius: 50px;
+  background-color: #004a77;
+}
+
+.card-picture:active {
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+}
+/* Material Web Card */
