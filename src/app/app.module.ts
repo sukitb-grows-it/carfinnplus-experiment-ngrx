@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BypassInterceptor } from './core/interceptors/bypass/bypass.interceptor';
+import { DemoCreateImageFromHtmlComponent } from './component/demo-create-image-from-html/demo-create-image-from-html.component';
 
 registerLocaleData(th);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DemoCreateImageFromHtmlComponent
   ],
   imports: [
     BrowserModule,
