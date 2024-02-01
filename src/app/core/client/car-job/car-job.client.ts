@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { TableSaleCarJob } from '../model/table-sale-car-job.model';
+import { TableSaleCarJob } from '../../../module/car-loan/table-sale-car-job/model/table-sale-car-job.model';
 import { Observable, map, of } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
-import { TableSaleCarJobAdapter } from './adapter/table-sale-car-job.adapter';
-import { TableSaleCarJobDTO } from './dto/table-sale-car-job.dto';
+import { environment } from '../../../../environments/environment';
+import { TableSaleCarJobAdapter } from './adapter/car-job.adapter';
+import { TableSaleCarJobDTO } from './dto/car-job.dto';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

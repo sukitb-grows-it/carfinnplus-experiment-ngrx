@@ -24,19 +24,59 @@ const getBankFilterList = async (): Promise<NzTableFilterList> => {
   const bankFilterListSource$ = inject(BankClient).fetchBankTableFilterList();
   let bankFilterList = await lastValueFrom(bankFilterListSource$);
 
-  console.log(bankFilterList);
   return bankFilterList;
 };
 
 const getJobStatusFilterList = (): NzTableFilterList => {
   const jobStatusFilterList: NzTableFilterList = [
-    { text: 'รออนุมัติ', value: 'รออนุมัติ', byDefault: false },
+    { text: 'สมัครสินเชื่อ', value: 'สมัครสินเชื่อ', byDefault: false },
+    { text: 'ส่งงานไฟแนนซ์', value: 'ส่งงานไฟแนนซ์', byDefault: false },
+    { text: 'นัดเซ็นสัญญา', value: 'นัดเซ็นสัญญา', byDefault: false },
+    { text: 'รอพิจารณา', value: 'รอพิจารณา', byDefault: false },
     { text: 'อนุมัติ', value: 'อนุมัติ', byDefault: false },
     { text: 'ไม่อนุมัติ', value: 'ไม่อนุมัติ', byDefault: false },
+    { text: 'ส่งพิจารณาใหม่', value: 'ส่งพิจารณาใหม่', byDefault: false },
     { text: 'ยกเลิก', value: 'ยกเลิก', byDefault: false },
   ];
   return jobStatusFilterList;
 };
+
+const getLoanTypeFilterList = (): NzTableFilterList => {
+  const loanTypeFilterList: NzTableFilterList = [
+    { text: 'สินเชื่อจำนำเล่ม', value: 'สินเชื่อจำนำเล่ม', byDefault: false },
+    {
+      text: 'สินเชื่อรีไฟแนนซ์',
+      value: 'สินเชื่อรีไฟแนนซ์',
+      byDefault: false,
+    },
+    {
+      text: 'สินเชื่อรถมือหนึ่ง',
+      value: 'สินเชื่อรถมือหนึ่ง',
+      byDefault: false,
+    },
+    {
+      text: 'สินเชื่อซื้อ-ขายรถยนต์',
+      value: 'สินเชื่อซื้อ-ขายรถยนต์',
+      byDefault: false,
+    },
+  ];
+  return loanTypeFilterList;
+};
+
+const getJobFromFilterList = (): NzTableFilterList => {
+  const jobFromFilterList: NzTableFilterList = [
+    { text: 'สายตรง', value: 'สายตรง' },
+        { text: 'Call', value: 'Call' },
+        { text: 'Facebook', value: 'Facebook' },
+        { text: 'Line', value: 'Line' },
+        { text: 'เว็บไซต์', value: 'เว็บไซต์' },
+        { text: 'Partner', value: 'Partner' },
+        { text: 'อื่นๆ', value: 'อื่นๆ' },
+  ]
+  return jobFromFilterList;
+}
+
+
 
 const initializeColumns = async (): Promise<ColumnItem[]> => {
   const listOfColumns: ColumnItem[] = [
@@ -46,10 +86,10 @@ const initializeColumns = async (): Promise<ColumnItem[]> => {
       sortFn: (a: SaleCarJob, b: SaleCarJob) => a.id.localeCompare(b.id),
       sortDirections: ['ascend', 'descend', null],
       sortOrder: 'descend',
-      filter: false,
-      listOfFilter: [],
+      filter: true,
+      listOfFilter: getLoanTypeFilterList(),
       filterFn: null,
-      filterMultiple: false,
+      filterMultiple: true,
     },
     {
       name: 'name',
@@ -114,10 +154,10 @@ const initializeColumns = async (): Promise<ColumnItem[]> => {
       sortFn: null,
       sortDirections: [null],
       sortOrder: null,
-      filter: false,
-      listOfFilter: [],
+      filter: true,
+      listOfFilter: getJobStatusFilterList(),
       filterFn: null,
-      filterMultiple: false,
+      filterMultiple: true,
     },
     {
       name: 'createdDateUntilToday',
@@ -192,7 +232,7 @@ const initializeColumns = async (): Promise<ColumnItem[]> => {
       sortDirections: [null],
       sortOrder: null,
       filter: false,
-      listOfFilter: [],
+      listOfFilter: getJobFromFilterList(),
       filterFn: null,
       filterMultiple: false,
     },

@@ -1,5 +1,5 @@
-import { SaleCarJobDTO, TableSaleCarJobDTO } from "../dto/table-sale-car-job.dto";
-import { SaleCarJob, TableSaleCarJob } from "../../model/table-sale-car-job.model";
+import { SaleCarJobDTO, TableSaleCarJobDTO } from "../dto/car-job.dto";
+import { SaleCarJob, TableSaleCarJob } from "../../../../module/car-loan/table-sale-car-job/model/table-sale-car-job.model";
 
 export class TableSaleCarJobAdapter {
 

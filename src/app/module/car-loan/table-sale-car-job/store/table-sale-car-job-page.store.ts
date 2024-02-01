@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TableSaleCarJob } from '../model/table-sale-car-job.model';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Observable, exhaustMap, map, switchMap, tap } from 'rxjs';
-import { TableSaleCarJobClient } from '../client/table-sale-car-job.client';
+import { TableSaleCarJobClient } from '../../../../core/client/car-job/car-job.client';
 import { NzTableFilterList } from 'ng-zorro-antd/table';
 import { BankClient } from '../../../../core/client/bank/bank.client';
 
