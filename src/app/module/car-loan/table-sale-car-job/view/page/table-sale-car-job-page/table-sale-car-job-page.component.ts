@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { JobType, TableSaleCarJobPageStore } from '../../../store/table-sale-car-job-page.store';
-import { SaleCarJob } from '../../../model/table-sale-car-job.model';
+import { SaleCarJob, TableSaleCarJobComponentModel } from '../../../model/table-sale-car-job.model';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { ColumnItem } from '../../../model/column-item.model';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './table-sale-car-job-page.component.html',
   styleUrl: './table-sale-car-job-page.component.scss'
 })
-export class TableSaleCarJobPageComponent {
+export class TableSaleCarJobPageComponent implements TableSaleCarJobComponentModel {
 
   tableSaleCarJobByJobType$ = this.store.tableSaleCarJobByJobType$;
   selectJobType$ = this.store.selectJobType$;
@@ -33,7 +33,7 @@ export class TableSaleCarJobPageComponent {
     this.store.setSelectJobType(JobType.WaitJob)
     this.store.getFilterList()
     this.activateRoute.data.subscribe(
-      ({ pageConfig}) => {
+      ({ pageConfig }) => {
         console.log(pageConfig)
         this.listOfColumns = pageConfig.listOfColumns
       }

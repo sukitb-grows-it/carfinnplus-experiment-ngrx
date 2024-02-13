@@ -1,4 +1,12 @@
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from "ng-zorro-antd/table";
+import { Observable } from "rxjs";
+
+export abstract class TableSaleCarJobComponentModel {
+    // store
+    abstract tableSaleCarJobByJobType$: Observable<SaleCarJob[]>
+    // method
+    abstract onDateRangeChange(dateRange: Date[]): void
+}
 
 export interface SaleCarJob {
     id: string;
