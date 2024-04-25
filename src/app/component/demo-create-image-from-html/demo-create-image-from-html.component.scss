@@ -1,63 +1,422 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@400;600;700&display=swap');
 
 /* Additional Touch-Ups */
 h1,h2,h3,h4,h5,p {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 
-body {
-  background-color: #1f1f1f;
-  display: flex;
-  gap: 20px;
-}
+// body {
+//   background-color: #1f1f1f;
+//   display: flex;
+//   gap: 20px;
+// }
 
-img {
-  height: auto;
-  width: 100%;
-}
-/* Additional Touch-Ups */
+// img {
+//   height: auto;
+//   width: 100%;
+// }
+// /* Additional Touch-Ups */
 
+// /* Material Web Card */
+// /* Block */
+// .material-card {
+//   display: block;
+//   background-color: #28292a;
+//   width: 400px;
+//   min-width: 200px;
+//   color: white;
+//   text-decoration: none;
+//   border-radius: 30px;
+//   cursor: pointer;
+//   transition: 200ms cubic-bezier(.2,0,0,1);
+// }
+
+// /* Elements */
+// .card-picture {
+//   border-radius: 30px;
+//   transition: 200ms cubic-bezier(.2,0,0,1);
+// }
+
+// .card-info {
+//   padding: 20px;
+//   background-color: white;
+// }
+
+// .card-title {
+//   font-weight: 400;
+// }
+
+// .card-desc {
+  
+// }
+
+// /* Modifiers */
+// .material-card:active {
+//   border-radius: 50px;
+//   background-color: #004a77;
+// }
+
+// .card-picture:active {
+//   border-top-right-radius: 50px;
+//   border-top-left-radius: 50px;
+// }
 /* Material Web Card */
-/* Block */
-.material-card {
-  display: block;
-  background-color: #28292a;
-  width: 400px;
-  min-width: 200px;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: 200ms cubic-bezier(.2,0,0,1);
-}
 
-/* Elements */
-.card-picture {
-  border-radius: 30px;
-  transition: 200ms cubic-bezier(.2,0,0,1);
-}
 
-.card-info {
-  padding: 20px;
+
+.card-body {
+  margin: 0px;
+  padding: 7px;
+  border: solid 1px #9797974d;
+  border-radius: 8px;
+  box-shadow: 1px 3px 8px #00000040;
   background-color: white;
 }
 
-.card-title {
-  font-weight: 400;
+.propfinn-logo {
+  width: 85px;
 }
 
-.card-desc {
+.propfinn-right {
+  position: relative;
+  background-image: url("../../../assets/propfinn/show-assets/show-assets-bg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0px 5px;
+}
+.box-1 {
+  background-color: #abe1fd;
+  font-size: 10px;
+  font-weight: 500;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.box-2 {
+  background-color: #7bd3f9;
+  font-weight: 500;
+  font-size: 10px;
+  padding: 5px;
+}
+
+.box-title {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.long-text {
+  font-size: 14px !important;
+  line-height: 1rem;
+  padding: 3px 0px !important;
+}
+
+.text-line1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+  padding: 4px 0px;
+  border: 1.5px solid #d3ae1a;
+  // border: solid 1.5px;
+  // border-image: linear-gradient(
+  //     to right,
+  //     #d3ae1a,
+  //     #aa8c15,
+  //     #e3bb1c,
+  //     #846c11,
+  //     #ecd168,
+  //     #977c13
+  //   )
+  //   1;
+    margin: 0;
+}
+
+.text-line2 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 5px;
+}
+
+.text-line3 {
+  color: #0a428f;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  border-top-left-radius: 10px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 0px;
+  padding: 3px 10px 3px 10px;
+}
+
+.text-line4 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 2.8rem !important;
+  margin: 0 0 5px;
+}
+
+.text-line5 {
+  color: #ff0000;
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  border-top-left-radius: 15px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 0px;
+  padding: 1px 3px 1px 3px;
+}
+
+.text-line6 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.text-line7 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.text-line8 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+
+.interest-button:hover {
+  opacity: 0.8;
+}
+
+.interest-button {
+  font-size: 18px;
+  font-weight: 500;
+  background: linear-gradient(#0a428f, #0a428f) padding-box,
+    linear-gradient(90deg, #d3ae1a, #aa8c15, #e3bb1c, #846c11, #ecd168, #977c13)
+      border-box;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fcee1a;
+  height: 51px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.large-image {
+  height: 262px;
+  margin-right: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      #d3ae1a,
+      #aa8c15,
+      #e3bb1c,
+      #846c11,
+      #ecd168,
+      #977c13
+    )
+    1;
+}
+
+.large-image img {
+  width: 100%;
   
 }
 
-/* Modifiers */
-.material-card:active {
-  border-radius: 50px;
-  background-color: #004a77;
+.flex-small-images {
+  display: flex;
 }
 
-.card-picture:active {
-  border-top-right-radius: 50px;
-  border-top-left-radius: 50px;
+.small-image {
+  flex: 1;
+  height: 83px;
+  margin-right: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      #d3ae1a,
+      #aa8c15,
+      #e3bb1c,
+      #846c11,
+      #ecd168,
+      #977c13
+    )
+    1;
 }
-/* Material Web Card */
+
+.small-image img {
+  height: 100%;
+  width: 100%;
+  
+}
+
+.prev-button {
+  position: absolute;
+  top: 40%;
+  left: -45px;
+  color: #ffffff;
+  background: #0a428f;
+}
+
+.next-button {
+  position: absolute;
+  top: 40%;
+  right: -50px;
+  color: #ffffff;
+  background: #0a428f;
+}
+
+.container {
+  position: relative;
+}
+
+.hidden-class {
+  display: none;
+}
+
+@media (max-width: 1399.98px) {
+  .propfinn-logo {
+    width: 70px;
+  }
+
+  .text-line6 {
+    margin-top: 3rem;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .long-text {
+    font-size: 12px !important;
+  }
+
+  .large-image img {
+    height: 100%;
+  }
+
+  .large-image {
+    height: 235px;
+  }
+
+  .small-image {
+    height: 70px;
+  }
+
+  .prev-button {
+    left: -30px;
+  }
+
+  .next-button {
+    right: -30px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+
+  .long-text {
+    font-size: 10px !important;
+  }
+  .large-image img {
+    height: 100%;
+  }
+
+  .large-image {
+    height: 215px;
+  }
+
+  .small-image {
+    height: 57px;
+  }
+
+  .propfinn-logo {
+    width: 60px;
+  }
+
+  .text-line1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .text-line2 {
+    font-size: 12px;
+  }
+
+  .text-line4 {
+    font-size: 11px;
+    margin-top: 2.5rem !important;
+  }
+
+  .text-line5 {
+    font-size: 18px;
+    padding: 5px 3px 5px 3px;
+  }
+
+  .text-line6 {
+    margin-top: 2.5rem;
+  }
+
+  .text-line7 {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .text-line8 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .box-1 {
+    font-size: 8px;
+    padding: 3px;
+  }
+
+  .box-2 {
+    font-size: 8px;
+    padding: 3px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .small-image {
+    height: 66px;
+  }
+  
+  .small-image img {
+    height: 100%;
+  }
+  .interest-button {
+    font-size: 16px;
+  }
+  .prev-button {
+    display: none;
+  }
+
+  .next-button {
+    display: none;
+  }
+}

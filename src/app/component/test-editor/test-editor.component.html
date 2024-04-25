@@ -1,0 +1,19 @@
+<div class="container my-5">
+  <p>รายละเอียดเนื้อหา</p>
+  <angular-editor
+    [config]="editorConfig"
+    [(ngModel)]="htmlContent"></angular-editor>
+
+  <div class="html mt-5">
+    <div class="mt-5" [innerHTML]="htmlContent | noSanitize"></div>
+  </div>
+
+  <p>รายละเอียดเนื้อหา</p>
+  <ckeditor [(ngModel)]="htmlTestContent" [editor]="editor" [config]="config"></ckeditor>
+
+  <div class="html mt-5">
+    <div class="mt-5"> {{htmlTestContent}}</div>
+  </div>
+
+  <div class="mt-5" [innerHTML]="htmlTestContent | noSanitize"></div>
+</div>

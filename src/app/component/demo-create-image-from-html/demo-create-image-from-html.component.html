@@ -1,6 +1,5 @@
-<div style="width: 500px;">
+<!-- <div style="width: 500px;" id="test">
   <img
-  id="test"
     class="card-picture"
     src="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
   <div class="card-info">
@@ -8,8 +7,81 @@
     <p class="card-desc">
       Documentation for all Material Components and styles available in Material
       Web
+      เทสส ฟหกหฟกฟหก
     </p>
+  </div>
+</div> -->
+
+<!-- <button (click)="downloadImage()">download</button> -->
+
+<div class="container py-lg-5 py-4">
+  <div class="row">
+    <div
+      *ngFor="
+        let assets of assetsList
+      "
+      class="col-lg-4 col-md-6 col-sm-12"
+    >
+      <div class="row card-body" [id]="assets.id">
+        <div class="col-8 p-0">
+          <div class="flex-container">
+            <div class="large-image mb-2">
+              <img nz-image [nzSrc]="assets.image_url1" />
+              <div class="box-title">
+                <div class="d-flex">
+                  <div class="box-1">
+                    <p style="margin: 0">รหัส : {{ assets.jobNumber ? assets.jobNumber:'-' }}</p>
+                  </div>
+                  <div class="box-2">
+                    <p style="margin: 0">ประเภท : {{ assets.type ? assets.type: '-' }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-small-images">
+              <div class="small-image">
+                <img
+                  nz-image
+                  [nzSrc]="assets.image_url2"
+                />
+              </div>
+              <div class="small-image">
+                <img nz-image [nzSrc]="assets.image_url3" />
+              </div>
+              <div class="small-image">
+                <img nz-image [nzSrc]="assets.image_url4"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 propfinn-right">
+          <div class="d-flex justify-content-center">
+            <img
+              class="propfinn-logo"
+              src="assets/propfinn/show-assets/propfinn-logo.webp"
+              alt=""
+            />
+          </div>
+          <p
+            class="text-line1 py-xxl-2"
+            [ngClass]="{ 'long-text': assets.assets_type.length > 10 }"
+          >
+            {{ assets.assets_type ? assets.assets_type : '-' }}
+          </p>
+          <p class="text-line2 mt-xxl-3">ราคาประเมิน</p>
+          <p class="text-line3">{{ assets.estimated_price ? assets.estimated_price : '-' }} ลบ.</p>
+          <p class="text-line4">วงเงินที่ต้องการ</p>
+          <p class="text-line5">{{ assets.credit_limit ? assets.credit_limit : '-' }} ลบ.</p>
+          <p class="text-line6" [ngClass]="{ 'long-text': assets.location.length > 10 }">
+            <i class="bi bi-geo-alt-fill mr-1"></i>{{ assets.location ? assets.location: '-' }}
+          </p>
+          <p class="text-line7">{{ assets.area_size ? assets.area_size :'-' }}</p>
+          <p class="text-line8">ตร.ว.</p>
+        </div>
+        <button class="interest-button" nz-button>สนใจ คลิก</button>
+      </div>
+      <button nz-button (click)="downloadImage(assets.id)">DownLoad</button>
+    </div>
   </div>
 </div>
 
-<button (click)="downloadImage()">download</button>
