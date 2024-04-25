@@ -16,4 +16,9 @@
   </div>
 
   <div class="mt-5" [innerHTML]="htmlTestContent | noSanitize"></div>
+
+  <div class="mt-5">
+    <ckeditor [(ngModel)]="htmlTestContent" [disabled]="true" [editor]="editor" [config]="configHide" ></ckeditor>
+  </div>
+
 </div>

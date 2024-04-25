@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Editor from '../../../../ckeditor5-custom-build/build/ckeditor';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-test-editor',
@@ -10,9 +11,14 @@ import Editor from '../../../../ckeditor5-custom-build/build/ckeditor';
 })
 export class TestEditorComponent {
   htmlTestContent = '';
-
-  
-  config = {
+  public editor:any = Editor;
+  value = 'test'
+  configHide:any = {
+    toolbar: {
+      items: []
+    }
+  }
+  config:any = {
     toolbar: {
       items: [
         'undo',
@@ -55,28 +61,44 @@ export class TestEditorComponent {
   },
     language: 'id',
     image: {
+      // styles: [ 'alignLeft', 'alignCenter', 'alignRight'],
+      // resizeOptions: [
+      //   {
+      //     name:'resizeImage:original',
+      //     label:'Original',
+      //     value: null
+      //   },
+      //   {
+      //     name:'resizeImage:50',
+      //     label:'50%',
+      //     value: 50
+      //   },
+      //   {
+      //     name:'resizeImage:75',
+      //     label:'75%',
+      //     value: 75
+      //   }
+      // ],
+      // toolbar: [
+      //   'imageStyle:alignLeft','imageStyle:alignCenter','imageStyle:alignRight', 
+      //   '|' ,
+      //   'resizeImage',
+      //   '|',
+      //   'imageTextAlternative'
+      // ]
       toolbar: ['imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|',
       'toggleImageCaption', 'imageTextAlternative'],
     },
     simpleUpload: {
-      uploadUrl:'https://220c-171-103-29-110.ngrok-free.app/carfinn/v1/article/upload_article_image',
+      uploadUrl:'https://growsit-develop.com:5100/carfinn/v1/article/upload_article_image',
       headers: {
         'X-CSRF-TOKEN': 'CSFR-Token',
         Authorization: 'Bearer WEW9ZUB64GDWD7Y4HN7CEP9YJ49L8LKZ7ZJT6Q2AEAKJWIUE'
       }
     }
   };
-  public editor = Editor
 
   ngOnInit() {
-  }
-
-  getData() {
-    // this.editor.
-  }
-
-  showData(event: any) {
-    console.log(event)
   }
 
   htmlContent = '';

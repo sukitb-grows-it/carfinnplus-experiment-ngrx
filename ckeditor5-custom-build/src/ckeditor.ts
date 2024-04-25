@@ -8,7 +8,6 @@ import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import { Bold, Code, Italic, Underline } from '@ckeditor/ckeditor5-basic-styles';
-import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
 import type { EditorConfig } from '@ckeditor/ckeditor5-core';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FontBackgroundColor, FontColor, FontFamily, FontSize } from '@ckeditor/ckeditor5-font';
@@ -42,7 +41,6 @@ class Editor extends ClassicEditor {
 		Autoformat,
 		Bold,
 		Code,
-		CodeBlock,
 		Essentials,
 		FontBackgroundColor,
 		FontColor,
